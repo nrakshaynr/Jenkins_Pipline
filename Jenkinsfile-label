@@ -1,0 +1,30 @@
+pipline{
+    agent ( label 'slave1' )
+    stages{
+        stage('Build'){
+            step{
+                sh '''
+                echo "hai"
+                sleep 5
+                '''
+            }
+        }
+        stage('Deploy'){
+            step{
+                sh '''
+                echo "hello"
+                sleep 6
+                '''
+            }
+
+        } 
+        stage('Testing') {
+            step{
+                sh '''
+                echo "bye"
+                sleep 5
+                '''
+            }
+        } 
+         }
+}
