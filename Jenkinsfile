@@ -1,30 +1,34 @@
-pipline 
-
-{
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                sh '''
-                echo "hai"
-                '''
-            }
-        }
-        stage('Deploy'){
-            steps{
-                sh '''
-                echo "Hello"
-                '''
-            }
-        }
-        stage('Testing'){
-            steps{
-                sh '''
-                echo "Bey"
-                '''
-            }
-        }
-            
-            }
-        
-    }
+pipeline {
+	agent any  
+	stages {
+		stage('BUILD') {
+			steps {
+				sh '''
+					pwd
+					sleep 5
+					echo This is the fist stage: BUILD
+				'''
+			}	
+		}
+		
+		stage('TEST') {
+			steps {
+				sh '''
+					pwd
+					sleep 5
+					echo This is the fist stage: TEST
+				'''
+			}	
+		}
+		
+		stage('DEPLOY') {
+			steps {
+				sh '''
+					pwd
+					sleep 5
+					echo This is the fist stage: DEPLOY
+				'''
+			}	
+		}
+	}
+}
