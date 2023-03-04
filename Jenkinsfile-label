@@ -1,30 +1,36 @@
-pipline{
-    agent ( label 'slave1' )
-    stages{
-        stage('Build'){
-            step{
+pipeline {
+    agent { label 'slave1' } 
+    stages {
+        stage('BUILD') {
+            steps {
                 sh '''
-                echo "hai"
-                sleep 5
+                    #!/bin/bash 
+                    pwd 
+                    ls
+                    echo "This is a BUILD stage"
+                    sleep 5
+                '''  
+            }
+        }
+        stage('DEPLOY') {
+            steps {
+                echo "This is a DEPLOY stage"
+                sh 'sleep 5'
+            }
+        }
+        stage('TESTING1') {
+            steps {
+                sh 'echo "This is a TESTING1 stage"'
+                sh 'sleep 5'
+            }
+        }
+        stage('TESTING2') {
+            steps {
+                sh '''
+                    echo "This is a TESTING2 stage"
+                    sleep 5
                 '''
             }
         }
-        stage('Deploy'){
-            step{
-                sh '''
-                echo "hello"
-                sleep 6
-                '''
-            }
-
-        } 
-        stage('Testing') {
-            step{
-                sh '''
-                echo "bye"
-                sleep 5
-                '''
-            }
-        } 
-         }
+    }
 }
